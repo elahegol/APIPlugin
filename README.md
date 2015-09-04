@@ -17,11 +17,17 @@ for register application:you must enter your application name  in userAPI plugin
 description of plugins is  :
 
 userAPI:Plugin for register application
+
 FriendAPI: show user's friends(show friend application)
+
 MembersAPI:show site members(showmembers application)
+
 twoapp2:two applications (showblogs and addblog applications)
+
 app2:one application for show blog and add blog(app2 application)
+
 adduserAPI:add user with admin(adduser application)
+
  
 2)using APIPlugins
 after register applications,These plug-ins on path: usersettings / configure your tools / PluginName from site are available to the user .
