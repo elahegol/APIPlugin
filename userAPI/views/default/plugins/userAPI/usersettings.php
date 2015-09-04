@@ -52,19 +52,18 @@ function newSecret()
 {
     var xstr = "";
     qrurl = "";
-    document.getElementById('mypub').value = "";//por kardane megdare mysecret(input)
-    document.getElementById('mypri').value = "";//por kardane megdare mysecret(input)
+    document.getElementById('mypub').value = "";
+    document.getElementById('mypri').value = "";
     window.XMLHttpRequest
 
     {
-        xmlhttp = new XMLHttpRequest();//Create an XMLHttpRequest Object
+        xmlhttp = new XMLHttpRequest();
     }
     
     //xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function()//event 
     {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200) //4: request finished and response is ready
-//200 ok
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) 
         {
             //alert(xmlhttp.responseText);
           xstr=xmlhttp.responseText;//string barmigardone
@@ -79,7 +78,7 @@ function newSecret()
     
     if(xstr != "")
     {
-         var res = xstr.split(";");//jodakardane horof
+         var res = xstr.split(";");
        document.getElementById('mypri').value = res[1];
         document.getElementById('mypub').value = res[0];
         
