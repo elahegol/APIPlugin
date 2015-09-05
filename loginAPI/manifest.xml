@@ -4,12 +4,12 @@
 	<id>loginAPI</id>
 	<description>loginAPI</description>
 	<author>elahegholenji</author>
-	<version>1.8</version>
+	<version>1.11</version>
 	
 	<license>GNU General Public License Version 2</license>
 	<activate_on_install>true</activate_on_install>
 	<requires>
 		<type>elgg_release</type>
-		<version>1.8</version>
+		<version>1.11</version>
 	</requires>
 </plugin_manifest>
