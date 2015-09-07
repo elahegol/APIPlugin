@@ -9,12 +9,13 @@
 // get previously saved settings
 $guid = elgg_get_page_owner_guid();
 $settings = elgg_get_all_plugin_user_settings($guid, 'userAPI');
-
-
+global $CONFIG;
+	$path = $CONFIG->site->url ;
+	//$path=elgg_get_site_url ();
  $user = elgg_get_logged_in_user_entity();
 $username=$user->username;
 $user_plugin = elgg_get_plugin_from_id('userAPI');
-
+//echo $path;
 
 ?>
 
@@ -52,18 +53,19 @@ function newSecret()
 {
     var xstr = "";
     qrurl = "";
-    document.getElementById('mypub').value = "";
-    document.getElementById('mypri').value = "";
+    document.getElementById('mypub').value = "";//por kardane megdare mysecret(input)
+    document.getElementById('mypri').value = "";//por kardane megdare mysecret(input)
     window.XMLHttpRequest
 
     {
-        xmlhttp = new XMLHttpRequest();
+        xmlhttp = new XMLHttpRequest();//Create an XMLHttpRequest Object
     }
     
     //xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function()//event 
     {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200) 
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) //4: request finished and response is ready
+//200 ok
         {
             //alert(xmlhttp.responseText);
           xstr=xmlhttp.responseText;//string barmigardone
@@ -72,13 +74,13 @@ function newSecret()
 
 
 
- 
-    xmlhttp.open("POST","http://localhost/elgg-1.11.0/mod/userAPI/views/default/userAPI/coder.php",false);
+ var path="<?php echo $path;?>";
+    xmlhttp.open("POST",path+"mod/userAPI/views/default/userAPI/coder.php",false);
     xmlhttp.send();
     
     if(xstr != "")
     {
-         var res = xstr.split(";");
+         var res = xstr.split(";");//jodakardane horof
        document.getElementById('mypri').value = res[1];
         document.getElementById('mypub').value = res[0];
         
