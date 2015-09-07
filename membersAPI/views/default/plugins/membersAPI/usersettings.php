@@ -14,7 +14,9 @@ $guid = elgg_get_page_owner_guid();
 
 $settings = elgg_get_all_plugin_user_settings($guid, 'membersAPI');
 
-
+global $CONFIG;
+	$path = $CONFIG->site->url ;
+	//$path=elgg_get_site_url ();
 
 $user = elgg_get_logged_in_user_entity();
 $username=$user->username ;
@@ -399,8 +401,8 @@ function newSecret()
           }
         }
     }
-	var currentuser = "<?php echo $name; ?>";
-    xmlhttp.open("GET","http://localhost/elgg-1.11.0/mod/membersAPI/views/default/membersAPI/coder.php",true);
+ var path="<?php echo $path;?>";
+    xmlhttp.open("GET",path+"mod/membersAPI/views/default/membersAPI/coder.php",true);
     xmlhttp.send();
 }
  
