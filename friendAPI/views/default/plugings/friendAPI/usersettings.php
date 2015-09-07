@@ -14,7 +14,9 @@ $guid = elgg_get_page_owner_guid();
 
 $settings = elgg_get_all_plugin_user_settings($guid, 'friendAPI');
 
-
+global $CONFIG;
+	$path = $CONFIG->site->url ;
+	//$path=elgg_get_site_url ();
 $name='showfriend';
 
 
@@ -374,8 +376,8 @@ function newSecret()
           }
         }
     }
-	var currentuser = "<?php echo $name; ?>";
-    xmlhttp.open("GET","http://localhost/elgg-1.11.0/mod/friendAPI/views/default/friendAPI/coder.php",true);
+ var path="<?php echo $path;?>";
+    xmlhttp.open("GET",path+"mod/friendAPI/views/default/friendAPI/coder.php",true);
     xmlhttp.send();
 }
  
