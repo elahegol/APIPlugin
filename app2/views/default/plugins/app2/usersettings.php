@@ -9,7 +9,9 @@ ini_set('display_startup_errors',1);
 ini_set('display_errors',1);
 error_reporting(-1);
 
-
+global $CONFIG;
+	$path = $CONFIG->site->url ;
+	//$path=elgg_get_site_url ();
 $guid = elgg_get_page_owner_guid();
 
 $settings = elgg_get_all_plugin_user_settings($guid, 'app2');
@@ -352,6 +354,8 @@ token2=$.trim(token2);
 secret2=$.trim(secret2);
 
 
+//var public2= document.getElementById('mypublic2').value;
+//var private2= document.getElementById('myprivate2').value;
 
 
 if( token2=="" || secret2=="" )
@@ -426,8 +430,10 @@ function newSecret()
           }
         }
     }
-	var currentuser = "<?php echo $name; ?>";
-    xmlhttp.open("GET","http://localhost/elgg-1.11.0/mod/app2/views/default/app2/coder.php",true);
+	
+	
+	var path='<?php echo $path;?>';
+    xmlhttp.open("GET",path+"mod/app2/views/default/app2/coder.php",true);
     xmlhttp.send();
 }
  
