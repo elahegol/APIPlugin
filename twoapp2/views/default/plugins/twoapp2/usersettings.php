@@ -16,7 +16,9 @@ ini_set('display_errors',1);
 error_reporting(-1);
 //echo "showblog application ";
 $guid = elgg_get_page_owner_guid();
-
+global $CONFIG;
+	$path = $CONFIG->site->url ;
+	//$path=elgg_get_site_url ();
 $settings = elgg_get_all_plugin_user_settings($guid, 'twoapp2');
 $name1='showblogs';
 
@@ -25,15 +27,10 @@ $name1='showblogs';
 $user = elgg_get_logged_in_user_entity();
 $username=$user->username ;
 $two_plugin = elgg_get_plugin_from_id('twoapp2');
-//$blog_token = $two_plugin->getUserSetting($name1.'token', $user->guid );
-//$blog_secret = $two_plugin->getUserSetting($name1.'secret', $user->guid );
 
-//if no show two API keys
 $r=elgg_get_entities(array('types' => 'object',
 	'subtypes' => 'appname', 'title'=>$name1));
 
-//if(!elgg_get_entities(array('types' => 'object',
-	//'subtypes' => 'appname', 'title'=>$name1)))
 		if(!get_subtype_id('object','app'.$name1))
 
 	{
@@ -56,24 +53,7 @@ else
 $user_public = $user_plugin->getUserSetting($name1.'public', $user->guid );
 $user_private = $user_plugin->getUserSetting($name1.'private', $user->guid );
 	}
-//
-/*if($user_public && $user_private)
-{
 
-
-///system_message( elgg_echo("you are get token and secret for show two application from:usersettings/configureyourtools/get_token"));
-//forward(REFERER);
-
-
-echo "</br>Your Public key   :  ";
-echo $user_public;
-echo "</br>Your private key  :  ";
-echo $user_private;
-
-}
-echo "<br/>";
-
-*/	
 $entities= elgg_get_entities(array('types' => 'object',
 	'subtypes' => $name1.'token','owner_guid'=> elgg_get_logged_in_user_guid()));
 	if($entities)
@@ -98,7 +78,7 @@ $entities= elgg_get_entities(array('types' => 'object',
 	
 	}}
 
-//
+
 	
 
 
@@ -110,14 +90,6 @@ $entities= elgg_get_entities(array('types' => 'object',
 
 if($blog_secret =="" && $blog_token =="")
 {
-//echo "</br>Your Access Secret:  ";
-//echo $blog_secret;
-//
-//echo "</br>Your Access Token:  ";
-//echo $blog_token;
-//}
-//else
-//{
 echo "</br> You must generate token and secret for use 'blog' application</br>";
 }
 
@@ -947,8 +919,10 @@ function newSecret()
           }
         }
     }
- 
-    xmlhttp.open("GET","http://localhost/elgg-1.11.0/mod/twoapp2/views/default/twoapp2/coder.php",true);
+	
+	 var path="<?php echo $path;?>";
+
+    xmlhttp.open("GET",path+"mod/twoapp2/views/default/twoapp2/coder.php",true);
     xmlhttp.send();
 }
  
