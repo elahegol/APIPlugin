@@ -453,7 +453,7 @@ else
 
 
 <form>
-<h5><input type="radio" name="app" value="showblog2" checked="checked" />blog application</h5>
+<h5><input type="radio" name="app" value="showblogs" checked="checked" />blog application</h5>
 
 <h5><input type="radio" name="app" value="addblog" />addblog application</h5>
 
