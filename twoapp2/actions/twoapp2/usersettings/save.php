@@ -180,7 +180,31 @@ else
 	
 	
 	
-	
+	if(!get_subtype_id('object','app'.$name))
+
+	{
+		if($message['addblog']==true)
+	{
+		system_message(elgg_echo($message));
+register_error(elgg_echo ($name." application not register!!"));
+forward(REFERER);
+
+	}
+	else
+	{
+		register_error(elgg_echo ($message));
+		register_error(elgg_echo ($name." application not register!!"));
+forward(REFERER);
+
+
+		
+	}
+
+	register_error(elgg_echo ($name." application not register!!"));
+forward(REFERER);
+
+
+}
 	
 	
 	
