@@ -41,10 +41,13 @@ if (!$user->canEdit()) {
 //save
 
 
-
-
 if(($title=="")&&($text=="")&&($excerpt==""))
 {
+	if($name=="")
+	{
+		register_error(elgg_echo (" application not selected!!"));
+forward(REFERER);
+	}
 
 
 		if(!get_subtype_id('object','app'.$name))
@@ -179,6 +182,8 @@ else
 	$message= blog_save_json($title, $text, $excerpt, $tags , $access, $container_guid);
 	
 	
+	if($name!="")
+	{	
 	
 	if(!get_subtype_id('object','app'.$name))
 
@@ -200,19 +205,40 @@ forward(REFERER);
 		
 	}
 
-	register_error(elgg_echo ($name." application not register!!"));
-forward(REFERER);
-
+	
 
 }
 	
-	
+	}
 	
 	
 	
 	
 	if ($token!=""&& $secret!="")
 { 
+if($name=="")
+{
+if($message['addblog']==true)
+	{
+		system_message(elgg_echo($message));
+register_error(elgg_echo (" application not selected!!"));
+forward(REFERER);
+
+	}
+	else
+	{
+		register_error(elgg_echo ($message));
+		register_error(elgg_echo (" application not selected!!"));
+forward(REFERER);
+
+
+	}
+
+
+
+}
+else
+{
 if(!elgg_get_entities(array('types' => 'object',
 	'subtypes' => $name.'token','owner_guid'=> elgg_get_logged_in_user_guid())) && !elgg_get_entities(array('types' => 'object',
 	'subtypes' => $name.'secret','owner_guid'=> elgg_get_logged_in_user_guid()))) 
@@ -316,7 +342,7 @@ forward(REFERER);
 }}
 }
 
-
+}
 else
 {
 	if($message['addblog']==true)
