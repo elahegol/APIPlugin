@@ -165,43 +165,6 @@ else
 		
 		if ($token!=""&& $secret!="")
 { 
-if(!elgg_get_entities(array('types' => 'object',
-	'subtypes' => $name.'token','owner_guid'=> elgg_get_logged_in_user_guid())) && !elgg_get_entities(array('types' => 'object',
-	'subtypes' => $name.'secret','owner_guid'=> elgg_get_logged_in_user_guid()))) 
-	{
-	$entity=new ElggObject();
-$entity -> subtype =$name.'token';
-
-$entity -> title=$token;
-$entity->save();
-
-$entity2=new ElggObject();
-$entity2 -> subtype =$name.'secret';
-$entity2 -> title =$secret;
-
-$entity2->save();
-
-if($entity ->save()&& $entity2->save())
-{
-	if($message['adduser']==true)
-	{
-		system_message(elgg_echo($message));
-system_message(elgg_echo($name.":new keys saved"));
-forward(REFERER);
-	}
-	else
-	{
-		
-		register_error(elgg_echo($message));
-system_message(elgg_echo($name.":new keys saved"));
-forward(REFERER);
-
-	}
-}
-	}
-	
-else
-{
 	$entities= elgg_get_entities(array('types' => 'object',
 	'subtypes' => $name.'token','owner_guid'=> elgg_get_logged_in_user_guid()));
 	if($entities)
@@ -252,7 +215,7 @@ forward(REFERER);
 forward(REFERER);
 	}
 }
-}}
+}
 else
 {
 	if($message['adduser']==true)
